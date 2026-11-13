@@ -1,0 +1,6 @@
+@student_workload_monitor_HostAddress = http://localhost:5167
+
+GET {{student_workload_monitor_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
