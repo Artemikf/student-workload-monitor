@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36616.10 d17.14
+VisualStudioVersion = 17.14.36616.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "student-workload-monitor", "student-workload-monitor\student-workload-monitor.csproj", "{C050DCF2-C2F8-4DC2-A03C-16FF3759AC3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentWorkload.Domain", "StudentWorkload.Domain\StudentWorkload.Domain.csproj", "{2CDAE6FB-BA33-4A1E-A523-7B98BE48ABE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C050DCF2-C2F8-4DC2-A03C-16FF3759AC3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C050DCF2-C2F8-4DC2-A03C-16FF3759AC3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C050DCF2-C2F8-4DC2-A03C-16FF3759AC3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CDAE6FB-BA33-4A1E-A523-7B98BE48ABE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CDAE6FB-BA33-4A1E-A523-7B98BE48ABE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CDAE6FB-BA33-4A1E-A523-7B98BE48ABE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CDAE6FB-BA33-4A1E-A523-7B98BE48ABE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
