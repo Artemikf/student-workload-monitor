@@ -49,17 +49,5 @@ Content-Type: application/json
   "estimatedHours": 8
 }
 
-### 7. Создать запись о затраченном времени (ожидаем 201 Created)
-# POST {{baseUrl}}/api/workload
-# Content-Type: application/json
-
-# {
-#   "studentId": 1,
-#   "subjectId": 1,
-#   "hoursSpent": 3.5,
-#   "date": "2026-11-15T14:00:00Z",
-#   "notes": "Налаштування Docker та перевірка контролерів"
-# }
-
-# ### 8. Получить прогноз / статистику нагрузки студента (ожидаем 200 OK)
-# GET {{baseUrl}}/api/workload/forecast/1
+### 7. Получить прогноз / статистику нагрузки студента (ожидаем 200 OK)
+GET {{baseUrl}}/api/workload/forecast/1
