@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StudentWorkload.Domain.Entities;
+using StudentWorkload.Application.Interfaces;
 
 namespace StudentWorkload.Infrastructure.Persistence;
 
-public class AppDbContext : DbContext
+public class AppDbContext : DbContext, IApplicationDbContext
 {
     public DbSet<Student> Students => Set<Student>();
     public DbSet<Subject> Subjects => Set<Subject>();
