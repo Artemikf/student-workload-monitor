@@ -24,7 +24,6 @@ namespace StudentWorkload.Infrastructure.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("DueDate")
