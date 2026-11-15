@@ -52,4 +52,14 @@ public class AssignmentsController : ControllerBase
 
         return Ok(assignment);
     }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAllAssignments()
+    {
+        var assignments = await _context.Assignments
+            .Include(a => a.Subject)
+            .ToListAsync();
+
+        return Ok(assignments);
+    }
 }
