@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Workload Monitor</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header class="topbar">
+        <div class="container topbar-inner">
+            <div>
+                <h1>Student Workload Monitor</h1>
+                <p class="subtitle">Контроль учебной нагрузки, дедлайнов и прогнозирование рисков</p>
+            </div>
+            <div class="student-selector">
+                <label for="studentSelect">Активный студент:</label>
+                <select id="studentSelect">
+                    <option value="">Загрузка...</option>
+                </select>
+                <button id="toggleStudentModalBtn" class="btn btn-secondary" type="button">+ Студент</button>
+                <button id="deleteStudentBtn" class="btn btn-danger-outline" type="button" title="Удалить студента">Удалить</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Уведомления об ошибках / успехе -->
+        <div id="toast" class="toast hidden"></div>
+
+        <!-- Форма добавления студента (раскрывается по кнопке) -->
+        <section id="newStudentPanel" class="card hidden">
+            <div class="card-header">
+                <h2>Новый студент</h2>
+                <button id="closeStudentPanelBtn" class="btn-icon" type="button">&times;</button>
+            </div>
+            <form id="studentForm" class="form-grid-3">
+                <div class="form-group">
+                    <label for="studentFullName">ФИО</label>
+                    <input type="text" id="studentFullName" placeholder="Иваненко Иван Иванович" required />
+                </div>
+                <div class="form-group">
+                    <label for="studentEmail">Email</label>
+                    <input type="email" id="studentEmail" placeholder="ivanenko@student.edu.ua" required />
+                </div>
+                <div class="form-group">
+                    <label for="studentGroup">Академическая группа</label>
+                    <input type="text" id="studentGroup" placeholder="ІПЗ-31" required />
+                </div>
+                <div class="form-actions full-width">
+                    <button type="submit" class="btn btn-primary">Создать студента</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Блок прогноза нагрузки (WorkloadForecastResultDto) -->
+        <section class="forecast-section">
+            <div class="forecast-grid">
+                <div class="stat-card">
+                    <span class="stat-label">Уровень риска (7 дней)</span>
+                    <div id="forecastRiskBadge" class="risk-badge risk-none">—</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Ожидаемые трудозатраты</span>
+                    <div class="stat-value"><span id="forecastHours">0</span> ч.</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Активных заданий</span>
+                    <div class="stat-value" id="forecastActiveCount">0</div>
+                </div>
+                <div class="stat-card recommendation-card">
+                    <span class="stat-label">Рекомендация системы</span>
+                    <p id="forecastRecommendation" class="recommendation-text">Выберите или создайте студента для расчёта прогноза.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Основная рабочая область: Предметы и Задания -->
+        <div class="workspace-grid">
+            <!-- Левая колонка: Предметы -->
+            <section class="card">
+                <div class="card-header">
+                    <h2>Предметы</h2>
+                </div>
+
+                <form id="subjectForm" class="stacked-form">
+                    <div class="form-group">
+                        <input type="text" id="subjectName" placeholder="Название предмета (напр. Інженерія ПЗ)" required />
+                    </div>
+                    <div class="form-row-2">
+                        <input type="text" id="subjectTeacher" placeholder="Преподаватель" required />
+                        <input type="number" id="subjectCredits" placeholder="Кредиты ECTS" min="1" max="30" step="1" value="4" required />
+                    </div>
+                    <button type="submit" class="btn btn-primary full-width">Добавить предмет</button>
+                </form>
+
+                <ul id="subjectsList" class="item-list">
+                    <li class="empty-state">Нет предметов</li>
+                </ul>
+            </section>
+
+            <!-- Правая колонка: Задания -->
+            <section class="card">
+                <div class="card-header">
+                    <h2>Задания и дедлайны</h2>
+                    <div class="filter-group">
+                        <select id="filterSubjectSelect">
+                            <option value="all">Все предметы</option>
+                        </select>
+                        <select id="filterStatusSelect">
+                            <option value="all">Все статусы</option>
+                            <option value="false">Активные</option>
+                            <option value="true">Выполненные</option>
+                        </select>
+                    </div>
+                </div>
+
+                <form id="assignmentForm" class="assignment-form">
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <label for="assignmentSubject">Предмет</label>
+                            <select id="assignmentSubject" required>
+                                <option value="">Сначала добавьте предмет</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="assignmentTitle">Название задания</label>
+                            <input type="text" id="assignmentTitle" placeholder="Лабораторная работа №3" required />
+                        </div>
+                    </div>
+                    <div class="form-row-3">
+                        <div class="form-group">
+                            <label for="assignmentDueDate">Дедлайн</label>
+                            <input type="datetime-local" id="assignmentDueDate" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="assignmentHours">Оценка (часов)</label>
+                            <input type="number" id="assignmentHours" min="0.5" max="200" step="0.5" value="4" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="assignmentDescription">Описание</label>
+                            <input type="text" id="assignmentDescription" placeholder="Краткие требования" required />
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Добавить задание</button>
+                </form>
+
+                <div id="assignmentsList" class="assignments-list">
+                    <div class="empty-state">Нет заданий</div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
