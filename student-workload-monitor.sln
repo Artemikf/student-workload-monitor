@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "student-workload-monitor", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentWorkload.Domain", "StudentWorkload.Domain\StudentWorkload.Domain.csproj", "{2CDAE6FB-BA33-4A1E-A523-7B98BE48ABE1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentWorkload.Infrastructure", "StudentWorkload.Infrastructure\StudentWorkload.Infrastructure.csproj", "{31AD60A3-C14C-4809-ADD3-38A230B7E727}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentWorkload.Application", "StudentWorkload.Application\StudentWorkload.Application.csproj", "{A29E9C08-E9C8-4D3E-83A5-153E8CDD46B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{2CDAE6FB-BA33-4A1E-A523-7B98BE48ABE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CDAE6FB-BA33-4A1E-A523-7B98BE48ABE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CDAE6FB-BA33-4A1E-A523-7B98BE48ABE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31AD60A3-C14C-4809-ADD3-38A230B7E727}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31AD60A3-C14C-4809-ADD3-38A230B7E727}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31AD60A3-C14C-4809-ADD3-38A230B7E727}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31AD60A3-C14C-4809-ADD3-38A230B7E727}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A29E9C08-E9C8-4D3E-83A5-153E8CDD46B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A29E9C08-E9C8-4D3E-83A5-153E8CDD46B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A29E9C08-E9C8-4D3E-83A5-153E8CDD46B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A29E9C08-E9C8-4D3E-83A5-153E8CDD46B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
