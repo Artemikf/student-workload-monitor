@@ -88,7 +88,6 @@ namespace StudentWorkload.Infrastructure.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("TeacherName")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("TotalCredits")

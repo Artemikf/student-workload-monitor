@@ -1,14 +1,18 @@
-﻿namespace StudentWorkload.Domain.Entities;
+﻿using System.Text.Json.Serialization;
+
+namespace StudentWorkload.Domain.Entities;
 
 public class Subject
 {
     public int Id { get; set; }
-    public string Name { get; set; } = string.Empty; // Название предмета (напр. "Мультиплатформне програмування")
-    public string TeacherName { get; set; } = string.Empty;
-    public int TotalCredits { get; set; } // Кредиты ECTS или общая сложность
+    public string Name { get; set; } = string.Empty;
+    public string? TeacherName { get; set; }
+    public int TotalCredits { get; set; }
 
     public int StudentId { get; set; }
-    public Student Student { get; set; } = null!;
+
+    [JsonIgnore]
+    public Student? Student { get; set; } // Сделали nullable, чтобы валидатор не требовал весь объект
 
     public ICollection<Assignment> Assignments { get; set; } = new List<Assignment>();
 }
