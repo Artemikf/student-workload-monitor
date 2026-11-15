@@ -3,7 +3,7 @@ using StudentWorkload.Application.Interfaces;
 using StudentWorkload.Application.Services;
 using StudentWorkload.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Mvc;
-//using student_workload_monitor.Infrastructure;
+using student_workload_monitor.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,7 +31,7 @@ builder.Services.AddControllers()
     });
 
 // Регистрация глобального перехватчика необработанных исключений
-//builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 builder.Services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<AppDbContext>());
 builder.Services.AddScoped<IWorkloadForecastingService, WorkloadForecastingService>();
@@ -48,7 +48,7 @@ using (var scope = app.Services.CreateScope())
 }
 
 // Включение middleware для перехвата ошибок в конвейере запросов
-//app.UseExceptionHandler();
+app.UseExceptionHandler();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
