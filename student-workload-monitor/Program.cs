@@ -28,11 +28,11 @@ builder.Services.AddControllers()
         };
     });
 
-// Регистрация глобального перехватчика необработанных исключений (от напарника)
+// Регистрация глобального перехватчика необработанных исключений
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 
-// Регистрация твоих сервисов и интерфейсов
+// Регистрация сервисов и интерфейсов
 builder.Services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<AppDbContext>());
 builder.Services.AddScoped<IWorkloadForecastingService, WorkloadForecastingService>();
 
@@ -52,10 +52,9 @@ using (var scope = app.Services.CreateScope())
 // Включение middleware для перехвата ошибок в конвейере запросов
 app.UseExceptionHandler();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    // Подключаем классический Swagger UI
+    // Подключаем Swagger UI
     app.UseSwagger();
     app.UseSwaggerUI();
 }
