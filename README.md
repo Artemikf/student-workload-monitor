@@ -1,4 +1,4 @@
-## ***Kurta Artem Khudoba Valeria IPZ-33 PG-7***
+# ***Kurta Artem Khudoba Valeria IPZ-33 PG-7***
 
 # Student Workload Monitoring & Forecasting System
 
